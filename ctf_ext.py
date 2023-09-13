@@ -41,6 +41,7 @@ output_filename = sys.argv[1] if len(sys.argv) > 1 else "/home/student/output_ct
 
 with open(output_filename, "w+") as f:
     f.write("\n".join(files))
+    print("\n".join(files))
     f.write("\n")
 
 print("Done! Found " + str(len(files)) + " files.")
