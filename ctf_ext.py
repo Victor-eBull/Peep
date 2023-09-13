@@ -25,9 +25,10 @@ def get_file_perms(path, paths=None):
             elif line[0] == "l":
                 pass # links are useless
 
-        print(files)
+        # print(files)
         
-        # valid_files = [(path + "/" + file.split(" ")[-1]) for file in files if file.split(" ")[0][-3] == "w"]
+        valid_files = [(path + "/" + file.split(" ")[-1]) for file in files if int(file.split(" ")[4]) > 0]
+        print(valid_files)
         return []
         # for readable in readable_folders:
         #     files_with_write += get_file_perms(readable, paths)
@@ -40,7 +41,7 @@ print("running...")
 cwd = os.getcwd()
 files = get_file_perms(cwd)
 
-output_filename = sys.argv[1] if len(sys.argv) > 1 else "/home/csdue/jackdunf/output_hack.txt"
+output_filename = sys.argv[1] if len(sys.argv) > 1 else "/home/student/output_ctf_ext.txt"
 
 with open(output_filename, "w+") as f:
     f.write("\n".join(files))
