@@ -28,11 +28,9 @@ def get_file_perms(path, paths=None):
         # print(files)
         
         valid_files = [(path + "/" + file.split(" ")[-1]) for file in files if int(file.split(" ")[4]) > 0]
-        print(valid_files)
-        return []
-        # for readable in readable_folders:
-        #     files_with_write += get_file_perms(readable, paths)
-        # return files_with_write
+        for readable in readable_folders:
+            files_with_write += get_file_perms(readable, paths)
+        return files_with_write
     except:
         return []
 
