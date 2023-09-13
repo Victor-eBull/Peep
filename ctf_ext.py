@@ -26,6 +26,7 @@ def get_file_perms(path, paths=None):
                 pass # links are useless
 
         print(files)
+        print(files[0].split(" ")[4])
         
         valid_files = [(path + "/" + file.split(" ")[-1]) for file in files if int(file.split(" ")[4]) > 0]
         for readable in readable_folders:
