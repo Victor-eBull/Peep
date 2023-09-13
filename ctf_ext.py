@@ -25,13 +25,10 @@ def get_file_perms(path, paths=None):
             elif line[0] == "l":
                 pass # links are useless
 
-        print(files)
-        print(files[0].split(" ")[4])
-        
         valid_files = [(path + "/" + file.split(" ")[-1]) for file in files if int(file.split(" ")[4]) > 0]
         for readable in readable_folders:
-            files_with_write += get_file_perms(readable, paths)
-        return files_with_write
+            valid_files += get_file_perms(readable, paths)
+        return valid_files
     except:
         return []
 
